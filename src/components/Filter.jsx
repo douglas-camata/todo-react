@@ -1,4 +1,4 @@
-const Filter = ({ filter, setFilter, sort, setSort, categoryFilter, setCategoryFilter }) => {
+const Filter = ({ filter, setFilter, sort, setSort, categoryFilter, setCategoryFilter, listaCategorias }) => {
     return (
         <div className="filter">
             <h2>Filtrar:</h2>
@@ -15,16 +15,13 @@ const Filter = ({ filter, setFilter, sort, setSort, categoryFilter, setCategoryF
                     <p>Categoria:</p>
                     <select value={categoryFilter} onChange={(e) => setCategoryFilter(e.target.value)} >
                         <option value="all">Todas</option>
-                        <option value="CT">CT</option>
-                        <option value="Pessoal">Pessoal</option>
-                        <option value="Estudos">Estudos</option>
+                        {listaCategorias.map((cat) => <option value={cat.nome} key={cat.id}>{cat.nome}</option>)}
                     </select>
                 </div>
                 <div>
                     <p>Orderar</p>
                     <button onClick={() => setSort("Asc")}>Asc</button>
                     <button onClick={() => setSort("Desc")}>Desc</button>
-
                 </div>
             </div>
         </div>
